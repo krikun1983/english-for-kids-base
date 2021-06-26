@@ -9,7 +9,7 @@ const Heading = () => <h1 className="heading">My React and TypeScript App</h1>;
 
 const Content = () => (
   <div>
-    <img src={car} className="car" />
+    <img src={car} className="car" alt="" />
   </div>
 );
 

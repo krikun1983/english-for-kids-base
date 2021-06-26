@@ -6,6 +6,7 @@
   "extends": [
     "airbnb-typescript/base",
     "eslint:recommended",
+    "airbnb-typescript",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
@@ -18,5 +19,11 @@
   "plugins": [
     "@typescript-eslint",
     "react-hooks"
-  ]
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": ["js", "jsx", "ts", "tsx"]
+    } }
+  }
 }
