@@ -1,0 +1,131 @@
+.nav-header {
+  position: relative;
+}
+
+//burger-menu
+.burger-header {
+  cursor: pointer;
+  position: absolute;
+  top: 35px;
+  left: 0px;
+  z-index: 10;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background-color: transparent;
+
+  &:hover {
+    filter:opacity(0.4);
+  }
+}
+
+.burger-header__lines,
+.burger-header__lines::after,
+.burger-header__lines::before {
+  position: absolute;
+  width: 35px;
+  height: 2px;
+  background-color: #2f2f2f;
+}
+
+.burger-header__lines {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.burger-header__lines::before {
+  content: '';
+  top: -15px;
+  left: 0;
+}
+
+.burger-header__lines::after {
+  content: '';
+  top: 15px;
+  left: 0;
+}
+
+.burger-header-active.burger-header__lines  {
+  background-color: transparent;
+}
+
+.burger-header-active.burger-header__lines::before {
+  top: 0;
+  left: 60%;
+  transform: rotate(45deg);
+  background-color: white;
+  width: 35px;
+}
+
+.burger-header-active.burger-header__lines::after {
+  top: 0;
+  left: 60%;
+  transform: rotate(-45deg);
+  background-color: white;
+  width: 35px;
+}
+
+.nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin-left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  width: 375px;
+  height: 100vh;
+  background-color: #0099AE;
+  z-index: 5;
+  transform: translateX(-375px);
+  transition: transform .3s ease-in;
+}
+
+.nav-header-show {
+  transform: translateX(0);
+}
+
+.menu-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 500px;
+  margin-top: 60px;
+
+  &__item {
+    font-family: Roboto;
+    font-size: 22px;
+    line-height: 25px;
+    text-transform: uppercase;
+  }
+
+  &__link {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+
+      &:hover {
+        filter: opacity(0.5);
+      }
+
+      &:active {
+        filter: opacity(0.5);
+        color: #a4fa06;
+      }
+
+    &_active {
+      font-weight: bold;
+      text-decoration: underline;
+
+        &:hover {
+          cursor: default;
+          filter: none;
+        }
+    }
+  }
+}
