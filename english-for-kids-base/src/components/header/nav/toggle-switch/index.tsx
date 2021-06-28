@@ -53,8 +53,8 @@ const ToggleSwitch = ({
                 ? 'toggle-switch-inner toggle-switch-disabled'
                 : 'toggle-switch-inner'
             }
-            data-yes="Train"
-            data-no="Play"
+            data-yes="Play"
+            data-no="Train"
           />
           <span
             className={

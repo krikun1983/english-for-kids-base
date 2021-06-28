@@ -1,27 +1,24 @@
 .toggle-switch {
   position: relative;
   width: 100px;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: left;
 
   &-checkbox {
     display: none;
   }
 
   &-label {
-    display: block;
-    overflow: hidden;
     cursor: pointer;
-    border: 0 solid #bbb;
-    border-radius: 20px;
+    display: block;
     margin: 0;
+    overflow: hidden;
+    border: none;
+    border-radius: 20px;
   }
 
   &-inner {
     display: block;
-    width: 200%;
     margin-left: -100%;
+    width: 200%;
     transition: margin 0.3s ease-in 0s;
 
     &:before,
@@ -31,10 +28,10 @@
       width: 50%;
       height: 34px;
       padding: 0;
-      line-height: 34px;
       font-size: 14px;
-      color: white;
+      line-height: 34px;
       font-weight: bold;
+      color: #ffffff;
       box-sizing: border-box;
     }
 
@@ -61,7 +58,7 @@
     content: attr(data-no);
     text-transform: uppercase;
     padding-right: 20px;
-    background-color: #bbb;
+    background-color: #0fc0fc;
     color: #fff;
     text-align: right;
   }
@@ -70,7 +67,7 @@
     display: block;
     width: 24px;
     margin: 5px;
-    background: #fff;
+    background: #ffffff;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -85,7 +82,7 @@
       margin-left: 0;
     }
     .toggle-switch-switch {
-      right: 0px;
+      right: 2px;
     }
   }
 }
