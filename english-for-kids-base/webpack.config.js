@@ -15,7 +15,8 @@ const devServer = () =>
     ? {}
     : {
         devServer: {
-          open: true,
+        open: true,
+        historyApiFallback: true,
           // hot: true,
           port: 8080,
           contentBase: path.resolve(__dirname, 'dist'),

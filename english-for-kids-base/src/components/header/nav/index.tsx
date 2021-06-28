@@ -1,67 +1,137 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './nav.scss';
 
 const Nav = (): JSX.Element => {
-  const clickHandler = (): void => {
-    const burgerClick = document.querySelector(
-      '.burger-header__lines',
-    ) as HTMLDivElement;
-    const header = document.querySelector('.nav-header') as HTMLElement;
-    burgerClick.classList.toggle('burger-header-active');
-    header.classList.toggle('nav-header-show');
-  };
+  const [isMenuShow, setMenuShow] = useState<boolean>(false);
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   return (
     <>
-      <button type="button" onClick={clickHandler} className="burger-header">
-        <span className="burger-header__lines" />
+      <button
+        type="button"
+        onClick={() => setMenuShow(!isMenuShow)}
+        className="burger-header"
+      >
+        <div
+          className={`burger-header__lines ${
+            isMenuShow ? 'burger-header-active' : ''
+          }`}
+        />
       </button>
-      <nav className="nav-header">
+      <nav className={`nav-header ${isMenuShow ? 'nav-header-show' : ''}`}>
         <ul className="menu-header">
           <li className="menu-header__item">
-            <a className="menu-header__link menu-header__link_active" href="/">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.endsWith('/') ? 'menu-header__link_active' : ''
+              }`}
+              to="/"
+            >
               Main Page
-            </a>
+            </Link>
           </li>
           <li className="menu-header__item">
-            <a className="menu-header__link" href="/action_a">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.search('/action_a')
+                  ? ''
+                  : 'menu-header__link_active'
+              }`}
+              to="/action_a"
+            >
               Action (set A)
-            </a>
+            </Link>
           </li>
           <li className="menu-header__item">
-            <a className="menu-header__link" href="/action_b">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.search('/action_b')
+                  ? ''
+                  : 'menu-header__link_active'
+              }`}
+              to="/action_b"
+            >
               Action (set B)
-            </a>
+            </Link>
           </li>
           <li className="menu-header__item">
-            <a className="menu-header__link" href="/action_c">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.search('/action_c')
+                  ? ''
+                  : 'menu-header__link_active'
+              }`}
+              to="/action_c"
+            >
               Action (set C)
-            </a>
+            </Link>
           </li>
           <li className="menu-header__item">
-            <a className="menu-header__link" href="/adjective">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.search('/adjective')
+                  ? ''
+                  : 'menu-header__link_active'
+              }`}
+              to="/adjective"
+            >
               Adjective
-            </a>
+            </Link>
           </li>
           <li className="menu-header__item">
-            <a className="menu-header__link" href="/animal_a">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.search('/animal_a')
+                  ? ''
+                  : 'menu-header__link_active'
+              }`}
+              to="/animal_a"
+            >
               Animal (set A)
-            </a>
+            </Link>
           </li>
           <li className="menu-header__item">
-            <a className="menu-header__link" href="/animal_b">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.search('/animal_b')
+                  ? ''
+                  : 'menu-header__link_active'
+              }`}
+              to="/animal_b"
+            >
               Animal (set B)
-            </a>
+            </Link>
           </li>
           <li className="menu-header__item">
-            <a className="menu-header__link" href="/clothes">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.search('/clothes') ? '' : 'menu-header__link_active'
+              }`}
+              to="/clothes"
+            >
               Clothes
-            </a>
+            </Link>
           </li>
           <li className="menu-header__item">
-            <a className="menu-header__link" href="/emotion">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${
+                currentPath.search('/emotion') ? '' : 'menu-header__link_active'
+              }`}
+              to="/emotion"
+            >
               Emotion
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
