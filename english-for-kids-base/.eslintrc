@@ -25,5 +25,8 @@
       "node": {
         "extensions": ["js", "jsx", "ts", "tsx"]
     } }
+  },
+  "rules": {
+    "jsx-a11y/label-has-associated-control": "off"
   }
 }

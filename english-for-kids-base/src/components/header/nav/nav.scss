@@ -27,8 +27,9 @@
 .burger-header__lines::before {
   position: absolute;
   width: 35px;
-  height: 2px;
-  background-color: #2f2f2f;
+  height: 3px;
+  background-color: #666565;
+  border-radius: 20%;
 }
 
 .burger-header__lines {
