@@ -1,6 +1,8 @@
 main {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 1400px;
-    outline: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1400px;
 }
