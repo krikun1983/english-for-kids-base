@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card } from '../../../app.types';
 import cards from '../../../cards';
+import { Card } from '../../../types/cards';
 import CardPage from '../card-page';
 
 const AnimalB = (): JSX.Element => {

@@ -5,7 +5,7 @@ interface InputCheckboxName {
   id: string;
   name: string;
   checked: boolean;
-  onChange: (event: boolean) => void; // React.ChangeEvent<HTMLInputElement>
+  onChange: (event: boolean) => void;
   disabled: boolean;
 }
 
@@ -27,7 +27,7 @@ const ToggleSwitch = ({
         disabled={disabled}
         onChange={event => onChange(event.target.checked)}
       />
-      {/* <label className="toggle-switch-label" htmlFor={id}>
+      <label className="toggle-switch-label" htmlFor={id}>
         <span
           className={
             disabled
@@ -44,27 +44,7 @@ const ToggleSwitch = ({
               : 'toggle-switch-switch'
           }
         />
-      </label> */}
-      {id ? (
-        <label className="toggle-switch-label" htmlFor={id}>
-          <span
-            className={
-              disabled
-                ? 'toggle-switch-inner toggle-switch-disabled'
-                : 'toggle-switch-inner'
-            }
-            data-yes="Play"
-            data-no="Train"
-          />
-          <span
-            className={
-              disabled
-                ? 'toggle-switch-switch toggle-switch-disabled'
-                : 'toggle-switch-switch'
-            }
-          />
-        </label>
-      ) : null}
+      </label>
     </div>
   );
 };

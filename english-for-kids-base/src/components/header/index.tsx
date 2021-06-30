@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import Nav from './nav';
 import ToggleSwitch from './nav/toggle-switch';
+import useTypeSelector from '../../hooks/useTypeSelector';
+import { ToggleActionTypes } from '../../types/toggle';
 import './header.scss';
 
 const Header = (): JSX.Element => {
-  const [newsletter, setNewsletter] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
-  const onNewsletterChange = (
-    checked: boolean | ((prevState: boolean) => boolean),
-  ) => {
-    setNewsletter(checked);
+  const { toggle } = useTypeSelector(state => state.toggle);
+
+  const toggleChange = () => {
+    if (toggle) {
+      dispatch({ type: ToggleActionTypes.TOGGLE_TRAIN });
+    } else {
+      dispatch({ type: ToggleActionTypes.TOGGLE_PLAY });
+    }
   };
 
   return (
@@ -17,8 +24,8 @@ const Header = (): JSX.Element => {
       <Nav />
       <ToggleSwitch
         id="newsletter"
-        checked={newsletter}
-        onChange={onNewsletterChange}
+        checked={toggle}
+        onChange={toggleChange}
         name="toggleSwitch"
         disabled={false}
       />

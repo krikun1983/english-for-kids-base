@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Card } from '../../app.types';
+import useTypeSelector from '../../hooks/useTypeSelector';
+import { Card } from '../../types/cards';
 import './card-page.scss';
 
 const CardPage = ({
@@ -8,6 +9,8 @@ const CardPage = ({
   image,
   audioSrc,
 }: Card): JSX.Element => {
+  const { toggle } = useTypeSelector(state => state.toggle);
+
   const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
 
   const cardAudio = (): void => {
@@ -23,7 +26,7 @@ const CardPage = ({
             <div className="card-images">
               <img className="card-images__item" src={image} alt={word} />
             </div>
-            <div className="card-text">
+            <div className={`card-text ${toggle ? '' : 'red'}`}>
               <div className="card-text__word">{word}</div>
               <button
                 className="card-text__button"
