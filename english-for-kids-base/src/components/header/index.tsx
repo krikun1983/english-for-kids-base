@@ -9,10 +9,10 @@ import './header.scss';
 const Header = (): JSX.Element => {
   const dispatch = useDispatch();
 
-  const { toggle } = useTypeSelector(state => state.toggle);
+  const { isToggle } = useTypeSelector(state => state.isToggle);
 
   const toggleChange = () => {
-    if (toggle) {
+    if (isToggle) {
       dispatch({ type: ToggleActionTypes.TOGGLE_TRAIN });
     } else {
       dispatch({ type: ToggleActionTypes.TOGGLE_PLAY });
@@ -24,7 +24,7 @@ const Header = (): JSX.Element => {
       <Nav />
       <ToggleSwitch
         id="newsletter"
-        checked={toggle}
+        checked={isToggle}
         onChange={toggleChange}
         name="toggleSwitch"
         disabled={false}

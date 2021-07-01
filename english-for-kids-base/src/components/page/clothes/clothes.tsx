@@ -1,6 +1,6 @@
 import React from 'react';
 import cards from '../../../cards';
-import { Card } from '../../../types/cards';
+import { Card } from '../../../types/card';
 import CardPage from '../card-page';
 
 const Clothes = (): JSX.Element => {

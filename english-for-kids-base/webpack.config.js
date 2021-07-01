@@ -15,11 +15,11 @@ const devServer = () =>
     ? {}
     : {
         devServer: {
+        contentBase: path.resolve(__dirname, 'dist'),
         open: true,
+        // hot: true,
+        port: 8080,
         historyApiFallback: true,
-          // hot: true,
-          port: 8080,
-          contentBase: path.resolve(__dirname, 'dist'),
         },
       };
 
@@ -36,6 +36,7 @@ module.exports = {
   output: {
     filename: filename('js'),
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     assetModuleFilename: 'assets/[hash][ext]',
   },
   module: {

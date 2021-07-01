@@ -1,5 +1,5 @@
 export interface ToggleState {
-  toggle: boolean;
+  isToggle: boolean;
 }
 
 export interface ToggleAction {

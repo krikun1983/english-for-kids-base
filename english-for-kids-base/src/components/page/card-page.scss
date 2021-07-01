@@ -45,10 +45,14 @@
   width: 320px;
   height: 270px;
   border-radius: 5px;
-  box-shadow: 0 4px 10px rgba(0,0,0,.5);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 
   &-images {
+    overflow: hidden;
+
     &__item {
+      transition: 0.6s;
+      transform-style: preserve-3d;
       width: 100%;
       border-radius: 5px;
     }
@@ -64,6 +68,7 @@
     font-family: Roboto;
     font-size: 22px;
     line-height: 25px;
+
     &__button {
       cursor: pointer;
       position: absolute;
@@ -76,9 +81,26 @@
   }
 }
 
-.red {
+.card-toggle {
   color: white;
-  background-color: red;
+  background-color: #21bffa;
+}
+
+.card-text-toggle {
+  display: none;
+}
+
+.card-images-toggle {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-images__item-toggle {
+  transition: 0.6s;
+	transform-style: preserve-3d;
+  width: 115%;
 }
 
 #rotate {

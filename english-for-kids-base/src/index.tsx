@@ -7,7 +7,7 @@ import Main from './components/main';
 import store from './store';
 import './app.scss';
 
-const App = () => (
+const App = (): JSX.Element => (
   <>
     <Router>
       <Header />

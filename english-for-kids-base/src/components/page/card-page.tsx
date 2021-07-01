@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { MouseEventHandler, useState } from 'react';
 import useTypeSelector from '../../hooks/useTypeSelector';
-import { Card } from '../../types/cards';
+import { Card } from '../../types/card';
 import './card-page.scss';
 
 const CardPage = ({
@@ -8,8 +8,9 @@ const CardPage = ({
   translation,
   image,
   audioSrc,
+  audioSrcPlay,
 }: Card): JSX.Element => {
-  const { toggle } = useTypeSelector(state => state.toggle);
+  const { isToggle } = useTypeSelector(state => state.isToggle);
 
   const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
 
@@ -18,15 +19,31 @@ const CardPage = ({
     audio.play();
   };
 
+  const audioSrcEvent = () => {
+    if (audioSrcPlay === audioSrc) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
+  };
+
   return (
     <div className={`flip-container ${isCardFlipShow ? 'flipper' : ''}`}>
       <div className="flipper" onClick={cardAudio} role="presentation">
-        <div className="front">
-          <div className="card">
-            <div className="card-images">
-              <img className="card-images__item" src={image} alt={word} />
+        <div className="front" onClick={audioSrcEvent} role="presentation">
+          <div className={`card ${isToggle ? 'card-toggle' : ''}`}>
+            <div
+              className={`card-images ${isToggle ? 'card-images-toggle' : ''}`}
+            >
+              <img
+                className={`card-images__item ${
+                  isToggle ? 'card-images__item-toggle' : ''
+                }`}
+                src={image}
+                alt={word}
+              />
             </div>
-            <div className={`card-text ${toggle ? '' : 'red'}`}>
+            <div className={`card-text ${isToggle ? 'card-text-toggle' : ''}`}>
               <div className="card-text__word">{word}</div>
               <button
                 className="card-text__button"

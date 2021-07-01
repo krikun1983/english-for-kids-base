@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import toggleReducer from './toggleReducer';
 
 const rootReducer = combineReducers({
-  toggle: toggleReducer,
+  isToggle: toggleReducer,
 });
 
 export default rootReducer;

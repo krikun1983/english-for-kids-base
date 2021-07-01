@@ -158,7 +158,7 @@ const cards = [
     },
     {
       word: 'big',
-      translation: 'высокий',
+      translation: 'большой',
       image: 'images/big.jpg',
       audioSrc: 'audio/big.mp3',
     },

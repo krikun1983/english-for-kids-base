@@ -16,15 +16,15 @@ const Main = (): JSX.Element => {
     <main className="main">
       <Switch>
         <Route exact path="/" component={MainPage} />
-        <Route exact path="/action_a" component={ActionSetA} />
-        <Route exact path="/action_b" component={ActionSetB} />
-        <Route exact path="/action_c" component={ActionSetC} />
-        <Route exact path="/adjective" component={Adjective} />
-        <Route exact path="/animal_a" component={AnimalA} />
-        <Route exact path="/animal_b" component={AnimalB} />
-        <Route exact path="/clothes" component={Clothes} />
-        <Route exact path="/emotion" component={Emotion} />
-        <Route exact path="/**" component={MainPage} />
+        <Route path="/action_a" component={ActionSetA} />
+        <Route path="/action_b" component={ActionSetB} />
+        <Route path="/action_c" component={ActionSetC} />
+        <Route path="/adjective" component={Adjective} />
+        <Route path="/animal_a" component={AnimalA} />
+        <Route path="/animal_b" component={AnimalB} />
+        <Route path="/clothes" component={Clothes} />
+        <Route path="/emotion" component={Emotion} />
+        <Route path="/**" component={MainPage} />
       </Switch>
     </main>
   );

@@ -5,7 +5,7 @@ import {
 } from '../../types/toggle';
 
 const initialState: ToggleState = {
-  toggle: false,
+  isToggle: false,
 };
 
 const toggleReducer = (
@@ -14,9 +14,9 @@ const toggleReducer = (
 ): ToggleState => {
   switch (action.type) {
     case ToggleActionTypes.TOGGLE_TRAIN:
-      return { ...state, toggle: false };
+      return { ...state, isToggle: false };
     case ToggleActionTypes.TOGGLE_PLAY:
-      return { ...state, toggle: true };
+      return { ...state, isToggle: true };
     default:
       return state;
   }
