@@ -1,14 +1,14 @@
 import React from 'react';
 import cards from '../../../cards';
+import Pages from '../../../constants/pages';
 import useTypeSelector from '../../../hooks/useTypeSelector';
 import { Card } from '../../../types/card';
 import CardPage from '../card-page';
-import './action-set-a.scss';
 
 const ActionSetA = (): JSX.Element => {
   const { isToggle } = useTypeSelector(state => state.isToggle);
 
-  const arrayWord = cards[0].map(card => {
+  const arrayWord = cards[Pages.actionSetA].map(card => {
     const { audioSrc }: Card = card;
     return audioSrc;
   });
@@ -23,6 +23,14 @@ const ActionSetA = (): JSX.Element => {
     const audio = new Audio(arrayWordRandom[arrayWordRandom.length - 1]);
     audio.play();
   };
+
+  // const audioSrcEvent = () => {
+  //   if (audioSrcPlay === audioSrc) {
+  //     console.log(true);
+  //   } else {
+  //     console.log(false);
+  //   }
+  // };
 
   return (
     <div className="main-wrapper">

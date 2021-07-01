@@ -22,13 +22,7 @@ const Header = (): JSX.Element => {
   return (
     <header className="header">
       <Nav />
-      <ToggleSwitch
-        id="newsletter"
-        checked={isToggle}
-        onChange={toggleChange}
-        name="toggleSwitch"
-        disabled={false}
-      />
+      <ToggleSwitch id="newsletter" checked={isToggle} onChange={toggleChange} name="toggleSwitch" disabled={false} />
     </header>
   );
 };

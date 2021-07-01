@@ -1,17 +1,10 @@
-import {
-  ToggleAction,
-  ToggleActionTypes,
-  ToggleState,
-} from '../../types/toggle';
+import { ToggleAction, ToggleActionTypes, ToggleState } from '../../types/toggle';
 
 const initialState: ToggleState = {
   isToggle: false,
 };
 
-const toggleReducer = (
-  state = initialState,
-  action: ToggleAction,
-): ToggleState => {
+const toggleReducer = (state = initialState, action: ToggleAction): ToggleState => {
   switch (action.type) {
     case ToggleActionTypes.TOGGLE_TRAIN:
       return { ...state, isToggle: false };

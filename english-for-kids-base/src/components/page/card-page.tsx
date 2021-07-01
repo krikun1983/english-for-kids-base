@@ -3,16 +3,11 @@ import useTypeSelector from '../../hooks/useTypeSelector';
 import { Card } from '../../types/card';
 import './card-page.scss';
 
-const CardPage = ({
-  word,
-  translation,
-  image,
-  audioSrc,
-  audioSrcPlay,
-}: Card): JSX.Element => {
+const CardPage = ({ word, translation, image, audioSrc, audioSrcPlay }: Card): JSX.Element => {
   const { isToggle } = useTypeSelector(state => state.isToggle);
 
   const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
+  // const [isCardPlaySuccess, setCardPlaySuccess] = useState<boolean>(false);
 
   const cardAudio = (): void => {
     const audio = new Audio(audioSrc);
@@ -32,31 +27,17 @@ const CardPage = ({
       <div className="flipper" onClick={cardAudio} role="presentation">
         <div className="front" onClick={audioSrcEvent} role="presentation">
           <div className={`card ${isToggle ? 'card-toggle' : ''}`}>
-            <div
-              className={`card-images ${isToggle ? 'card-images-toggle' : ''}`}
-            >
+            <div className={`card-images ${isToggle ? 'card-images-toggle' : ''}`}>
               <img
-                className={`card-images__item ${
-                  isToggle ? 'card-images__item-toggle' : ''
-                }`}
+                className={`card-images__item ${isToggle ? 'card-images__item-toggle' : ''}`}
                 src={image}
                 alt={word}
               />
             </div>
             <div className={`card-text ${isToggle ? 'card-text-toggle' : ''}`}>
               <div className="card-text__word">{word}</div>
-              <button
-                className="card-text__button"
-                type="button"
-                onClick={() => setCardFlipShow(!isCardFlipShow)}
-              >
-                <svg
-                  id="rotate"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="400"
-                  height="400"
-                  viewBox="0, 0, 400,400"
-                >
+              <button className="card-text__button" type="button" onClick={() => setCardFlipShow(!isCardFlipShow)}>
+                <svg id="rotate" xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0, 0, 400,400">
                   <g id="svgg">
                     <path
                       id="path0"
@@ -81,10 +62,7 @@ const CardPage = ({
           </div>
         </div>
 
-        <div
-          className="back"
-          onMouseLeave={() => setCardFlipShow(!isCardFlipShow)}
-        >
+        <div className="back" onMouseLeave={() => setCardFlipShow(!isCardFlipShow)}>
           <div className="card">
             <div className="card-images">
               <img className="card-images__item" src={image} alt={word} />

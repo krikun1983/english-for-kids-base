@@ -9,25 +9,15 @@ const Nav = (): JSX.Element => {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setMenuShow(!isMenuShow)}
-        className="burger-header"
-      >
-        <div
-          className={`burger-header__lines ${
-            isMenuShow ? 'burger-header-active' : ''
-          }`}
-        />
+      <button type="button" onClick={() => setMenuShow(!isMenuShow)} className="burger-header">
+        <div className={`burger-header__lines ${isMenuShow ? 'burger-header-active' : ''}`} />
       </button>
       <nav className={`nav-header ${isMenuShow ? 'nav-header-show' : ''}`}>
         <ul className="menu-header">
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.endsWith('/') ? 'menu-header__link_active' : ''
-              }`}
+              className={`menu-header__link ${currentPath.endsWith('/') ? 'menu-header__link_active' : ''}`}
               to="/"
             >
               Main Page
@@ -36,11 +26,7 @@ const Nav = (): JSX.Element => {
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.search('/action_a')
-                  ? ''
-                  : 'menu-header__link_active'
-              }`}
+              className={`menu-header__link ${currentPath.search('/action_a') ? '' : 'menu-header__link_active'}`}
               to="/action_a"
             >
               Action (set A)
@@ -49,11 +35,7 @@ const Nav = (): JSX.Element => {
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.search('/action_b')
-                  ? ''
-                  : 'menu-header__link_active'
-              }`}
+              className={`menu-header__link ${currentPath.search('/action_b') ? '' : 'menu-header__link_active'}`}
               to="/action_b"
             >
               Action (set B)
@@ -62,11 +44,7 @@ const Nav = (): JSX.Element => {
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.search('/action_c')
-                  ? ''
-                  : 'menu-header__link_active'
-              }`}
+              className={`menu-header__link ${currentPath.search('/action_c') ? '' : 'menu-header__link_active'}`}
               to="/action_c"
             >
               Action (set C)
@@ -75,11 +53,7 @@ const Nav = (): JSX.Element => {
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.search('/adjective')
-                  ? ''
-                  : 'menu-header__link_active'
-              }`}
+              className={`menu-header__link ${currentPath.search('/adjective') ? '' : 'menu-header__link_active'}`}
               to="/adjective"
             >
               Adjective
@@ -88,11 +62,7 @@ const Nav = (): JSX.Element => {
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.search('/animal_a')
-                  ? ''
-                  : 'menu-header__link_active'
-              }`}
+              className={`menu-header__link ${currentPath.search('/animal_a') ? '' : 'menu-header__link_active'}`}
               to="/animal_a"
             >
               Animal (set A)
@@ -101,11 +71,7 @@ const Nav = (): JSX.Element => {
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.search('/animal_b')
-                  ? ''
-                  : 'menu-header__link_active'
-              }`}
+              className={`menu-header__link ${currentPath.search('/animal_b') ? '' : 'menu-header__link_active'}`}
               to="/animal_b"
             >
               Animal (set B)
@@ -114,9 +80,7 @@ const Nav = (): JSX.Element => {
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.search('/clothes') ? '' : 'menu-header__link_active'
-              }`}
+              className={`menu-header__link ${currentPath.search('/clothes') ? '' : 'menu-header__link_active'}`}
               to="/clothes"
             >
               Clothes
@@ -125,9 +89,7 @@ const Nav = (): JSX.Element => {
           <li className="menu-header__item">
             <Link
               onClick={() => setMenuShow(!isMenuShow)}
-              className={`menu-header__link ${
-                currentPath.search('/emotion') ? '' : 'menu-header__link_active'
-              }`}
+              className={`menu-header__link ${currentPath.search('/emotion') ? '' : 'menu-header__link_active'}`}
               to="/emotion"
             >
               Emotion
