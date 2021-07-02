@@ -7,10 +7,10 @@ import CardPage from '../card-page';
 const AnimalA = (): JSX.Element => {
   return (
     <div className="main-wrapper">
-      {cards[Pages.animalA].map(card => {
+      {/* {cards[Pages.animalA].map(card => {
         const { word, translation, image, audioSrc }: Card = card;
         return <CardPage key={word} word={word} translation={translation} image={image} audioSrc={audioSrc} />;
-      })}
+      })} */}
     </div>
   );
 };

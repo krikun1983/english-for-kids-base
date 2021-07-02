@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import cards from '../../../cards';
 import Pages from '../../../constants/pages';
 import useTypeSelector from '../../../hooks/useTypeSelector';
+import store from '../../../store';
 import { Card } from '../../../types/card';
+import { GameActionTypes } from '../../../types/game';
 import CardPage from '../card-page';
 
 const ActionSetA = (): JSX.Element => {
+  const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
+  const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
 
-  const arrayWord = cards[Pages.actionSetA].map(card => {
+  const { arrayStars } = useTypeSelector(state => state.arrayStars);
+
+  const arrayAudioSrcWords = cards[Pages.actionSetA].map(card => {
     const { audioSrc }: Card = card;
     return audioSrc;
   });
@@ -17,25 +24,33 @@ const ActionSetA = (): JSX.Element => {
     return [...words].sort(() => Math.random() - 0.5);
   };
 
-  const arrayWordRandom = randomWords(arrayWord);
+  const arrayWordRandom = randomWords(arrayAudioSrcWords);
+  const [arrayWordRandomState, setArrayWordRandom] = useState<string[]>(arrayWordRandom);
 
-  const cardAudioRandom = (): void => {
-    const audio = new Audio(arrayWordRandom[arrayWordRandom.length - 1]);
-    audio.play();
+  const startGame = () => {
+    if (!isBtnStart) {
+      dispatch({ type: GameActionTypes.GAME_START });
+    }
   };
 
-  // const audioSrcEvent = () => {
-  //   if (audioSrcPlay === audioSrc) {
-  //     console.log(true);
-  //   } else {
-  //     console.log(false);
-  //   }
-  // };
-
+  const start = () => {
+    startGame();
+    if (store.getState().isBtnStart.isBtnStart) {
+      const audio = new Audio(arrayWordRandomState[arrayWordRandomState.length - 1]);
+      audio.play();
+    }
+  };
   return (
     <div className="main-wrapper">
+      <div className="stars-result">
+        {arrayStars.length > 0
+          ? arrayStars.map((elem: string) => {
+              return <img src={elem} key={elem} alt="" />;
+            })
+          : ''}
+      </div>
       <div className="main-wrapper__cards">
-        {cards[0].map(card => {
+        {cards[Pages.actionSetA].map(card => {
           const { word, translation, image, audioSrc }: Card = card;
           return (
             <CardPage
@@ -44,14 +59,16 @@ const ActionSetA = (): JSX.Element => {
               translation={translation}
               image={image}
               audioSrc={audioSrc}
-              audioSrcPlay={arrayWordRandom[arrayWordRandom.length - 1]}
+              audioSrcStartPlay={arrayWordRandomState}
+              arrayWordRandomState={arrayWordRandomState}
+              setArray={setArrayWordRandom}
             />
           );
         })}
       </div>
       <div className={`main-wrapper__btn ${isToggle ? '' : 'hidden'}`}>
-        <button type="button" onClick={cardAudioRandom}>
-          START
+        <button type="button" onClick={start}>
+          {`${isBtnStart ? 'AGAIN' : 'START'}`}
         </button>
       </div>
     </div>

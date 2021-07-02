@@ -33,3 +33,15 @@
   }
 }
 
+.stars-result {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  text-align: right;
+  height: 6vh;
+  margin-bottom: 10px;
+  img {
+    display: inline-block;
+    height: 100%;
+  }
+}

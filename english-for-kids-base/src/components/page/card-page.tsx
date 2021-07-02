@@ -1,24 +1,55 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import useTypeSelector from '../../hooks/useTypeSelector';
-import { Card } from '../../types/card';
+import { CardAction } from '../../types/card';
+import { StarsActionTypes } from '../../types/stars';
+import successImages from '../../../public/star-win.svg';
+import errorImages from '../../../public/star.svg';
 import './card-page.scss';
+import { ToggleActionTypes } from '../../types/toggle';
 
-const CardPage = ({ word, translation, image, audioSrc, audioSrcPlay }: Card): JSX.Element => {
+const CardPage = ({
+  word,
+  translation,
+  image,
+  audioSrc,
+  audioSrcStartPlay,
+  arrayWordRandomState,
+  setArray,
+}: CardAction): JSX.Element => {
+  const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
+  const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
+
+  const addArrayStars = (strings: string) => {
+    dispatch({ type: StarsActionTypes.ADD_STARS, payload: [strings] });
+  };
 
   const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
-  // const [isCardPlaySuccess, setCardPlaySuccess] = useState<boolean>(false);
 
   const cardAudio = (): void => {
-    const audio = new Audio(audioSrc);
-    audio.play();
+    if (!isToggle) {
+      const audio = new Audio(audioSrc);
+      audio.play();
+    }
   };
 
   const audioSrcEvent = () => {
-    if (audioSrcPlay === audioSrc) {
-      console.log(true);
-    } else {
-      console.log(false);
+    if (arrayWordRandomState.length === 1) {
+      dispatch({ type: ToggleActionTypes.TOGGLE_TRAIN });
+    }
+    if (audioSrcStartPlay[audioSrcStartPlay.length - 1] === audioSrc) {
+      arrayWordRandomState.pop();
+      setArray(arrayWordRandomState);
+      const audio = new Audio(audioSrcStartPlay[audioSrcStartPlay.length - 1]);
+      audio.play();
+      if (isBtnStart) {
+        addArrayStars(successImages);
+      }
+    } else if (isBtnStart) {
+      const audio = new Audio('errorPlay.mp3');
+      audio.play();
+      addArrayStars(errorImages);
     }
   };
 

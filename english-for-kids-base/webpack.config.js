@@ -51,6 +51,11 @@ module.exports = {
         type: 'asset/resource',
       },
       {
+        test: /\.mp3$/,
+        include: SRC,
+        loader: 'file-loader',
+      },
+      {
         test: /\.(woff(2)?|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
