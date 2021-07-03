@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
 import { useHistory } from 'react-router-dom';
 import cards from '../../../cards';
-import Pages from '../../../constants/pages';
 import useTypeSelector from '../../../hooks/useTypeSelector';
 import store from '../../../store';
 import { Card, SrcPages } from '../../../types/card';
@@ -23,7 +22,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
   const { arrayStars } = useTypeSelector(state => state.arrayStars);
   const { count } = useTypeSelector(state => state.count);
 
-  const arrayAudioSrcWords = cards[Pages.actionSetA].map(card => {
+  const arrayAudioSrcWords = cards[src].map(card => {
     const { audioSrc }: Card = card;
     return audioSrc;
   });
