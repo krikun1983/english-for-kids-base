@@ -97,6 +97,12 @@ const Nav = (): JSX.Element => {
           </li>
         </ul>
       </nav>
+      {isMenuShow}
+      <div
+        className={`menu-close ${isMenuShow ? '' : 'hidden'}`}
+        onClick={() => setMenuShow(!isMenuShow)}
+        role="presentation"
+      />
     </>
   );
 };

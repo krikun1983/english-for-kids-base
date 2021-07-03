@@ -5,8 +5,8 @@ import { CardAction } from '../../types/card';
 import { StarsActionTypes } from '../../types/stars';
 import successImages from '../../../public/star-win.svg';
 import errorImages from '../../../public/star.svg';
-import './card-page.scss';
 import { ToggleActionTypes } from '../../types/toggle';
+import './card-page.scss';
 
 const CardPage = ({
   word,
@@ -26,6 +26,7 @@ const CardPage = ({
   };
 
   const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
+  const [isCardSuccessHidden, setCardSuccessHidden] = useState<boolean>(false); /// ////////////
 
   const cardAudio = (): void => {
     if (!isToggle) {

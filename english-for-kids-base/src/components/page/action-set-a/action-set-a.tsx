@@ -46,7 +46,7 @@ const ActionSetA = (): JSX.Element => {
       <div className="stars-result">
         {arrayStars.length > 0
           ? arrayStars.map((elem: string) => {
-              return <img src={elem} key={uuid()} alt="" />;
+              return <img src={elem} key={uuid()} alt="star" />;
             })
           : ''}
       </div>
