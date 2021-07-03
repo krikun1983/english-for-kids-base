@@ -45,6 +45,7 @@ const CardPage = ({
       const audio = new Audio(audioSrcStartPlay[audioSrcStartPlay.length - 1]);
       audio.play();
       if (isBtnStart) {
+        setCardSuccessHidden(!isCardSuccessHidden);
         addArrayStars(successImages);
       }
     } else if (isBtnStart) {
@@ -54,10 +55,23 @@ const CardPage = ({
     }
   };
 
+  const combineFn = () => {
+    if (!isCardSuccessHidden) {
+      cardAudio();
+      if (isBtnStart) {
+        audioSrcEvent();
+      }
+    }
+  };
+
   return (
-    <div className={`flip-container ${isCardFlipShow ? 'flipper' : ''}`}>
-      <div className="flipper" onClick={cardAudio} role="presentation">
-        <div className="front" onClick={audioSrcEvent} role="presentation">
+    <div
+      className={`flip-container ${isCardFlipShow ? 'flipper' : ''} ${
+        isCardSuccessHidden && isToggle ? 'card-success-close' : ''
+      }`}
+    >
+      <div className="flipper" onClick={combineFn} role="presentation">
+        <div className="front">
           <div className={`card ${isToggle ? 'card-toggle' : ''}`}>
             <div className={`card-images ${isToggle ? 'card-images-toggle' : ''}`}>
               <img
