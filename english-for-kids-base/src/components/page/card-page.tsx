@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import useTypeSelector from '../../hooks/useTypeSelector';
 import { CardAction } from '../../types/card';
@@ -7,6 +7,8 @@ import successImages from '../../../public/star-win.svg';
 import errorImages from '../../../public/star.svg';
 import { ToggleActionTypes } from '../../types/toggle';
 import './card-page.scss';
+import { GameActionTypes } from '../../types/game';
+import { ResultGameActionTypes } from '../../types/result-game';
 
 const CardPage = ({
   word,
@@ -26,7 +28,10 @@ const CardPage = ({
   };
 
   const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
-  const [isCardSuccessHidden, setCardSuccessHidden] = useState<boolean>(false); /// ////////////
+  const [isCardSuccessHidden, setCardSuccessHidden] = useState<boolean>(false);
+  useEffect(() => {
+    setCardSuccessHidden(false);
+  }, [isToggle]);
 
   const cardAudio = (): void => {
     if (!isToggle) {
@@ -37,7 +42,8 @@ const CardPage = ({
 
   const audioSrcEvent = () => {
     if (arrayWordRandomState.length === 1) {
-      dispatch({ type: ToggleActionTypes.TOGGLE_TRAIN });
+      dispatch({ type: GameActionTypes.GAME_STOP });
+      dispatch({ type: ResultGameActionTypes.RESULT_GAME_SUCCESS });
     }
     if (audioSrcStartPlay[audioSrcStartPlay.length - 1] === audioSrc) {
       arrayWordRandomState.pop();

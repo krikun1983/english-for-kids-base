@@ -7,11 +7,7 @@ export interface Card {
   audioSrc: string;
 }
 
-export interface CardAction {
-  word: string;
-  translation: string;
-  image: string;
-  audioSrc: string;
+export interface CardAction extends Card {
   audioSrcStartPlay: string[];
   arrayWordRandomState: string[];
   setArray: Dispatch<SetStateAction<string[]>>;

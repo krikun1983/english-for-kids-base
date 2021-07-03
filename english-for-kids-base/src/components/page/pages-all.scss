@@ -45,3 +45,20 @@
     height: 100%;
   }
 }
+
+.result-game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  font-size: 3rem;
+  color:rgb(114, 221, 7);
+  background-color: rgba(255, 255, 255, 0.9);
+
+}

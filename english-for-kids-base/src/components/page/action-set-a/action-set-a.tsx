@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
+import { useHistory } from 'react-router-dom';
 import cards from '../../../cards';
 import Pages from '../../../constants/pages';
 import useTypeSelector from '../../../hooks/useTypeSelector';
@@ -8,12 +9,16 @@ import store from '../../../store';
 import { Card } from '../../../types/card';
 import { GameActionTypes } from '../../../types/game';
 import CardPage from '../card-page';
+import { ResultGameActionTypes } from '../../../types/result-game';
+import { StarsActionTypes } from '../../../types/stars';
+import { ToggleActionTypes } from '../../../types/toggle';
 
 const ActionSetA = (): JSX.Element => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
-
+  const { isResultGame } = useTypeSelector(state => state.isResultGame);
   const { arrayStars } = useTypeSelector(state => state.arrayStars);
 
   const arrayAudioSrcWords = cards[Pages.actionSetA].map(card => {
@@ -27,10 +32,23 @@ const ActionSetA = (): JSX.Element => {
 
   const arrayWordRandom = randomWords(arrayAudioSrcWords);
   const [arrayWordRandomState, setArrayWordRandom] = useState<string[]>(arrayWordRandom);
+  useEffect(() => {
+    setArrayWordRandom(arrayWordRandom);
+  }, [isToggle]);
 
   const startGame = () => {
     if (!isBtnStart) {
       dispatch({ type: GameActionTypes.GAME_START });
+    }
+  };
+
+  const stopGame = () => {
+    if (arrayWordRandomState.length === 0) {
+      history.push('/');
+      dispatch({ type: GameActionTypes.GAME_STOP });
+      dispatch({ type: StarsActionTypes.REMOVE_STARS });
+      dispatch({ type: ResultGameActionTypes.RESULT_GAME_ERROR });
+      dispatch({ type: ToggleActionTypes.TOGGLE_TRAIN });
     }
   };
 
@@ -43,6 +61,10 @@ const ActionSetA = (): JSX.Element => {
   };
   return (
     <div className="main-wrapper">
+      <div className={`result-game ${isResultGame ? '' : 'hidden'}`} onClick={stopGame} role="presentation">
+        <img src="success.png" alt="success" />
+        <p>error: 0</p>
+      </div>
       <div className="stars-result">
         {arrayStars.length > 0
           ? arrayStars.map((elem: string) => {
