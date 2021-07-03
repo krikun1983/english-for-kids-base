@@ -65,7 +65,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
     <div className="main-wrapper">
       <div className={`result-game ${isResultGame ? '' : 'hidden'}`} onClick={stopGame} role="presentation">
         {count > 0 ? <img src="failure.png" alt="success" /> : <img src="success.png" alt="success" />}
-        <p>error: {count}</p>
+        {count > 0 ? <p>error: {count}</p> : <p>Well done keep it up!</p>}
       </div>
       <div className="stars-result">
         {arrayStars.length > 0
