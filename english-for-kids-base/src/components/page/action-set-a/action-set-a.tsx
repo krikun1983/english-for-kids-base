@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import uuid from 'react-uuid';
 import cards from '../../../cards';
 import Pages from '../../../constants/pages';
 import useTypeSelector from '../../../hooks/useTypeSelector';
@@ -45,7 +46,7 @@ const ActionSetA = (): JSX.Element => {
       <div className="stars-result">
         {arrayStars.length > 0
           ? arrayStars.map((elem: string) => {
-              return <img src={elem} key={elem} alt="" />;
+              return <img src={elem} key={uuid()} alt="" />;
             })
           : ''}
       </div>
