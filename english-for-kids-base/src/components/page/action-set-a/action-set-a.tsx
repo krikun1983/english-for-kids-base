@@ -12,6 +12,7 @@ import CardPage from '../card-page';
 import { ResultGameActionTypes } from '../../../types/result-game';
 import { StarsActionTypes } from '../../../types/stars';
 import { ToggleActionTypes } from '../../../types/toggle';
+import { CountErrorActionTypes } from '../../../types/count-error';
 
 const ActionSetA = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const ActionSetA = (): JSX.Element => {
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
   const { isResultGame } = useTypeSelector(state => state.isResultGame);
   const { arrayStars } = useTypeSelector(state => state.arrayStars);
+  const { count } = useTypeSelector(state => state.count);
 
   const arrayAudioSrcWords = cards[Pages.actionSetA].map(card => {
     const { audioSrc }: Card = card;
@@ -49,6 +51,7 @@ const ActionSetA = (): JSX.Element => {
       dispatch({ type: StarsActionTypes.REMOVE_STARS });
       dispatch({ type: ResultGameActionTypes.RESULT_GAME_ERROR });
       dispatch({ type: ToggleActionTypes.TOGGLE_TRAIN });
+      dispatch({ type: CountErrorActionTypes.REMOVE_COUNT });
     }
   };
 
@@ -62,8 +65,8 @@ const ActionSetA = (): JSX.Element => {
   return (
     <div className="main-wrapper">
       <div className={`result-game ${isResultGame ? '' : 'hidden'}`} onClick={stopGame} role="presentation">
-        <img src="success.png" alt="success" />
-        <p>error: 0</p>
+        {count > 0 ? <img src="failure.png" alt="success" /> : <img src="success.png" alt="success" />}
+        <p>error: {count}</p>
       </div>
       <div className="stars-result">
         {arrayStars.length > 0

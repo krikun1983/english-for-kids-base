@@ -5,10 +5,10 @@ import { CardAction } from '../../types/card';
 import { StarsActionTypes } from '../../types/stars';
 import successImages from '../../../public/star-win.svg';
 import errorImages from '../../../public/star.svg';
-import { ToggleActionTypes } from '../../types/toggle';
 import './card-page.scss';
 import { GameActionTypes } from '../../types/game';
 import { ResultGameActionTypes } from '../../types/result-game';
+import { CountErrorActionTypes } from '../../types/count-error';
 
 const CardPage = ({
   word,
@@ -22,6 +22,10 @@ const CardPage = ({
   const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
+
+  const addCount = () => {
+    dispatch({ type: CountErrorActionTypes.ADD_COUNT, payload: 1 });
+  };
 
   const addArrayStars = (strings: string) => {
     dispatch({ type: StarsActionTypes.ADD_STARS, payload: [strings] });
@@ -55,6 +59,7 @@ const CardPage = ({
         addArrayStars(successImages);
       }
     } else if (isBtnStart) {
+      addCount();
       const audio = new Audio('errorPlay.mp3');
       audio.play();
       addArrayStars(errorImages);
