@@ -6,7 +6,7 @@ import cards from '../../../cards';
 import Pages from '../../../constants/pages';
 import useTypeSelector from '../../../hooks/useTypeSelector';
 import store from '../../../store';
-import { Card } from '../../../types/card';
+import { Card, SrcPages } from '../../../types/card';
 import { GameActionTypes } from '../../../types/game';
 import CardPage from '../card-page';
 import { ResultGameActionTypes } from '../../../types/result-game';
@@ -14,7 +14,7 @@ import { StarsActionTypes } from '../../../types/stars';
 import { ToggleActionTypes } from '../../../types/toggle';
 import { CountErrorActionTypes } from '../../../types/count-error';
 
-const ActionSetA = (): JSX.Element => {
+const PagesCards = ({ src }: SrcPages): JSX.Element => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { isToggle } = useTypeSelector(state => state.isToggle);
@@ -76,7 +76,7 @@ const ActionSetA = (): JSX.Element => {
           : ''}
       </div>
       <div className="main-wrapper__cards">
-        {cards[Pages.actionSetA].map(card => {
+        {cards[src].map(card => {
           const { word, translation, image, audioSrc }: Card = card;
           return (
             <CardPage
@@ -101,4 +101,4 @@ const ActionSetA = (): JSX.Element => {
   );
 };
 
-export default ActionSetA;
+export default PagesCards;

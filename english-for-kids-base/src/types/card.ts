@@ -12,3 +12,7 @@ export interface CardAction extends Card {
   arrayWordRandomState: string[];
   setArray: Dispatch<SetStateAction<string[]>>;
 }
+
+export interface SrcPages {
+  src: number;
+}
