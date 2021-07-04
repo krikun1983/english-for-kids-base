@@ -12,6 +12,7 @@ export enum ResultGameActionTypes {
   RESULT_GAME_SUCCESS = 'RESULT_GAME_SUCCESS',
   RESULT_GAME_ERROR = 'RESULT_GAME_ERROR',
   RESULT_MAIN = 'RESULT_MAIN',
+  RESULT_MAIN_DEFAULT = 'RESULT_MAIN_DEFAULT',
 }
 
 interface ResultGameResultGameSuccessAction {

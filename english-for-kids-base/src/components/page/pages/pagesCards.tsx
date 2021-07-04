@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
-import { Redirect, useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import cards from '../../../cards';
 import useTypeSelector from '../../../hooks/useTypeSelector';
 import store from '../../../store';
@@ -15,7 +15,6 @@ import { CountErrorActionTypes } from '../../../types/count-error';
 
 const PagesCards = ({ src }: SrcPages): JSX.Element => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
   const { isResultGame } = useTypeSelector(state => state.isResultGame);
@@ -34,25 +33,23 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
 
   const arrayWordRandom = randomWords(arrayAudioSrcWords);
   const [arrayWordRandomState, setArrayWordRandom] = useState<string[]>(arrayWordRandom);
-  // const [isMainPage, setMainPage] = useState<boolean>(false);
   useEffect(() => {
     setArrayWordRandom(arrayWordRandom);
   }, [isToggle]);
-
-  const startGame = () => {
-    if (!isBtnStart) {
-      dispatch({ type: GameActionTypes.GAME_START });
-    }
-  };
-
-  const stopGame = () => {
-    if (arrayWordRandomState.length === 0) {
-      history.push('/');
+  useEffect(() => {
+    if (isMain) {
       dispatch({ type: GameActionTypes.GAME_STOP });
       dispatch({ type: StarsActionTypes.REMOVE_STARS });
       dispatch({ type: ResultGameActionTypes.RESULT_GAME_ERROR });
       dispatch({ type: ToggleActionTypes.TOGGLE_TRAIN });
       dispatch({ type: CountErrorActionTypes.REMOVE_COUNT });
+      dispatch({ type: ResultGameActionTypes.RESULT_MAIN_DEFAULT });
+    }
+  }, [isMain]);
+
+  const startGame = () => {
+    if (!isBtnStart) {
+      dispatch({ type: GameActionTypes.GAME_START });
     }
   };
 
@@ -69,7 +66,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
   }
   return (
     <div className="main-wrapper">
-      <div className={`result-game ${isResultGame ? '' : 'hidden'}`} onClick={stopGame} role="presentation">
+      <div className={`result-game ${isResultGame ? '' : 'hidden'}`} role="presentation">
         {count > 0 ? <img src="failure.png" alt="success" /> : <img src="success.png" alt="success" />}
         {count > 0 ? <p>error: {count}</p> : <p>Well done keep it up!</p>}
       </div>

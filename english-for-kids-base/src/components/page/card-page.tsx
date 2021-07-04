@@ -19,7 +19,8 @@ const CardPage = ({
   arrayWordRandomState,
   setArray,
 }: CardAction): JSX.Element => {
-  const nextWordAudio = 1500;
+  const nextWordAudio = 1500; // ms
+  const redirectMainPage = 5000; // ms
   const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
@@ -55,9 +56,10 @@ const CardPage = ({
     if (arrayWordRandomState.length === 1) {
       dispatch({ type: GameActionTypes.GAME_STOP });
       dispatch({ type: ResultGameActionTypes.RESULT_GAME_SUCCESS });
+
       setTimeout(() => {
         dispatch({ type: ResultGameActionTypes.RESULT_MAIN });
-      }, 5000);
+      }, redirectMainPage);
       if (count > 0) {
         const audio = new Audio('failure.mp3');
         audio.play();

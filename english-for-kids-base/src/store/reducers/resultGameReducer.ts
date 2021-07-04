@@ -11,6 +11,8 @@ const resultGameReducer = (state = initialState, action: ResultGameAction): Resu
       return { ...state, isResultGame: true };
     case ResultGameActionTypes.RESULT_GAME_ERROR:
       return { ...state, isResultGame: false };
+    case ResultGameActionTypes.RESULT_MAIN_DEFAULT:
+      return { ...state, isMain: false };
     case ResultGameActionTypes.RESULT_MAIN:
       return { ...state, isMain: true };
     default:
