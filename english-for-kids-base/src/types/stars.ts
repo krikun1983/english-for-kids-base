@@ -9,6 +9,7 @@ export interface StarsAction {
 
 export enum StarsActionTypes {
   ADD_STARS = 'ADD_STARS',
+  ADD_STARS_MAX = 'ADD_STARS_MAX',
   REMOVE_STARS = 'REMOVE_STARS',
 }
 

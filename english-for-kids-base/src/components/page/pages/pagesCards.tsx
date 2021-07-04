@@ -93,7 +93,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
       </div>
       <div className={`main-wrapper__btn ${isToggle ? '' : 'hidden'}`}>
         <button type="button" onClick={start}>
-          {`${isBtnStart ? 'AGAIN' : 'START'}`}
+          {`${isBtnStart ? 'REPEAT' : 'START GAME'}`}
         </button>
       </div>
     </div>

@@ -19,16 +19,23 @@ const CardPage = ({
   arrayWordRandomState,
   setArray,
 }: CardAction): JSX.Element => {
+  const nextWordAudio = 1500;
   const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
+  const { arrayStars } = useTypeSelector(state => state.arrayStars);
+  const { count } = useTypeSelector(state => state.count);
 
   const addCount = () => {
     dispatch({ type: CountErrorActionTypes.ADD_COUNT, payload: 1 });
   };
 
   const addArrayStars = (strings: string) => {
-    dispatch({ type: StarsActionTypes.ADD_STARS, payload: [strings] });
+    if (arrayStars.length > 17) {
+      dispatch({ type: StarsActionTypes.ADD_STARS_MAX, payload: [strings] });
+    } else {
+      dispatch({ type: StarsActionTypes.ADD_STARS, payload: [strings] });
+    }
   };
 
   const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
@@ -44,16 +51,28 @@ const CardPage = ({
     }
   };
 
-  const audioSrcEvent = () => {
+  const wordCheck = () => {
     if (arrayWordRandomState.length === 1) {
       dispatch({ type: GameActionTypes.GAME_STOP });
       dispatch({ type: ResultGameActionTypes.RESULT_GAME_SUCCESS });
+      if (count > 0) {
+        const audio = new Audio('failure.mp3');
+        audio.play();
+      } else {
+        const audio = new Audio('success.mp3');
+        audio.play();
+      }
     }
     if (audioSrcStartPlay[audioSrcStartPlay.length - 1] === audioSrc) {
       arrayWordRandomState.pop();
       setArray(arrayWordRandomState);
-      const audio = new Audio(audioSrcStartPlay[audioSrcStartPlay.length - 1]);
+      const audio = new Audio('correct.mp3');
       audio.play();
+      setTimeout(() => {
+        const audioWord = new Audio(audioSrcStartPlay[audioSrcStartPlay.length - 1]);
+        audioWord.play();
+      }, nextWordAudio);
+
       if (isBtnStart) {
         setCardSuccessHidden(!isCardSuccessHidden);
         addArrayStars(successImages);
@@ -70,7 +89,7 @@ const CardPage = ({
     if (!isCardSuccessHidden) {
       cardAudio();
       if (isBtnStart) {
-        audioSrcEvent();
+        wordCheck();
       }
     }
   };
