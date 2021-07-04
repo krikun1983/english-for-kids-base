@@ -26,13 +26,14 @@ const CardPage = ({
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
   const { arrayStars } = useTypeSelector(state => state.arrayStars);
   const { count } = useTypeSelector(state => state.count);
+  const MAX_STARS = 15;
 
   const addCount = () => {
     dispatch({ type: CountErrorActionTypes.ADD_COUNT, payload: 1 });
   };
 
   const addArrayStars = (strings: string) => {
-    if (arrayStars.length > 15) {
+    if (arrayStars.length > MAX_STARS) {
       dispatch({ type: StarsActionTypes.ADD_STARS_MAX, payload: [strings] });
     } else {
       dispatch({ type: StarsActionTypes.ADD_STARS, payload: [strings] });
