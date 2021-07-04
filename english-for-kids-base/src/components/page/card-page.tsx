@@ -32,7 +32,7 @@ const CardPage = ({
   };
 
   const addArrayStars = (strings: string) => {
-    if (arrayStars.length > 17) {
+    if (arrayStars.length > 15) {
       dispatch({ type: StarsActionTypes.ADD_STARS_MAX, payload: [strings] });
     } else {
       dispatch({ type: StarsActionTypes.ADD_STARS, payload: [strings] });
