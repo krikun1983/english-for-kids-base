@@ -55,6 +55,9 @@ const CardPage = ({
     if (arrayWordRandomState.length === 1) {
       dispatch({ type: GameActionTypes.GAME_STOP });
       dispatch({ type: ResultGameActionTypes.RESULT_GAME_SUCCESS });
+      setTimeout(() => {
+        dispatch({ type: ResultGameActionTypes.RESULT_MAIN });
+      }, 5000);
       if (count > 0) {
         const audio = new Audio('failure.mp3');
         audio.play();

@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
   isBtnStart: gameReducer,
   arrayStars: starsReducer,
   isResultGame: resultGameReducer,
+  isMain: resultGameReducer,
   count: CountErrorReducer,
 });
 

@@ -1,5 +1,6 @@
 export interface ResultGameState {
   isResultGame: boolean;
+  isMain: boolean;
 }
 
 export interface ResultGameAction {
@@ -10,6 +11,7 @@ export interface ResultGameAction {
 export enum ResultGameActionTypes {
   RESULT_GAME_SUCCESS = 'RESULT_GAME_SUCCESS',
   RESULT_GAME_ERROR = 'RESULT_GAME_ERROR',
+  RESULT_MAIN = 'RESULT_MAIN',
 }
 
 interface ResultGameResultGameSuccessAction {

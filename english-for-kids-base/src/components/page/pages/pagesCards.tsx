@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import cards from '../../../cards';
 import useTypeSelector from '../../../hooks/useTypeSelector';
 import store from '../../../store';
@@ -19,6 +19,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
   const { isResultGame } = useTypeSelector(state => state.isResultGame);
+  const { isMain } = useTypeSelector(state => state.isMain);
   const { arrayStars } = useTypeSelector(state => state.arrayStars);
   const { count } = useTypeSelector(state => state.count);
 
@@ -33,6 +34,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
 
   const arrayWordRandom = randomWords(arrayAudioSrcWords);
   const [arrayWordRandomState, setArrayWordRandom] = useState<string[]>(arrayWordRandom);
+  // const [isMainPage, setMainPage] = useState<boolean>(false);
   useEffect(() => {
     setArrayWordRandom(arrayWordRandom);
   }, [isToggle]);
@@ -61,6 +63,10 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
       audio.play();
     }
   };
+
+  if (isMain) {
+    return <Redirect to="/" />;
+  }
   return (
     <div className="main-wrapper">
       <div className={`result-game ${isResultGame ? '' : 'hidden'}`} onClick={stopGame} role="presentation">
