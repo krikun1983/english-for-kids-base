@@ -1,0 +1,24 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1400px;
+
+  &_github {
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: #000000;
+    }
+
+    img {
+      margin-right: 10px;
+      width: 50px;
+    }
+  }
+}
+
