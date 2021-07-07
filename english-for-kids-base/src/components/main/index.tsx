@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Pages from '../../constants/pages';
 import MainPage from '../page/main-page/main-page';
 import PagesCards from '../page/pages/pagesCards';
+import StatisticPage from '../page/statistic-page/statistic-page';
 import './main.scss';
 
 const Main = (): JSX.Element => {
@@ -18,6 +19,7 @@ const Main = (): JSX.Element => {
         <Route path="/animal_b" render={(): JSX.Element => <PagesCards src={Pages.animalB} />} />
         <Route path="/clothes" render={(): JSX.Element => <PagesCards src={Pages.clothes} />} />
         <Route path="/emotion" render={(): JSX.Element => <PagesCards src={Pages.emotion} />} />
+        <Route path="/statistic" component={StatisticPage} />
         <Route path="/**" component={MainPage} />
       </Switch>
     </main>

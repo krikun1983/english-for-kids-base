@@ -1,0 +1,29 @@
+.statistic-page {
+  margin: 0 auto;
+  width: 1440px;
+  outline: 1px solid red;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+
+  @media screen and (max-width: 360px) {
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 320px) {
+    font-size: 11px;
+  }
+}
+
+table > thead  {
+  background-color: #21bffa;
+}
+
+.temp {
+ color: red;
+ text-align: center;
+ font-weight: bold;
+ font-size: 1.5rem;
+}

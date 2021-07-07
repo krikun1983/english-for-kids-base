@@ -54,12 +54,8 @@
   align-items: center;
   justify-content: end;
   text-align: right;
-  height: 6vh;
+  height: 4.5vh;
   margin: 0 15px 10px;
-
-  @media screen and (max-width: 1200px) {
-    height: 5vh;
-  }
 
   @media screen and (max-width: 960px) {
     height: 4vh;

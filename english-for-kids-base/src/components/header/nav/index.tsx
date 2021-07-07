@@ -95,6 +95,15 @@ const Nav = (): JSX.Element => {
               Emotion
             </Link>
           </li>
+          <li className="menu-header__item">
+            <Link
+              onClick={() => setMenuShow(!isMenuShow)}
+              className={`menu-header__link ${currentPath.search('/statistic') ? '' : 'menu-header__link_active'}`}
+              to="/statistic"
+            >
+              Statistic
+            </Link>
+          </li>
         </ul>
       </nav>
       {isMenuShow}
