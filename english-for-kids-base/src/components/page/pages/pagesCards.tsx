@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
 import { Redirect } from 'react-router-dom';
-import cards from '../../../cards';
 import useTypeSelector from '../../../hooks/useTypeSelector';
 import store from '../../../store';
 import { Card, SrcPages } from '../../../types/card';
@@ -12,8 +11,10 @@ import { ResultGameActionTypes } from '../../../types/result-game';
 import { StarsActionTypes } from '../../../types/stars';
 import { ToggleActionTypes } from '../../../types/toggle';
 import { CountErrorActionTypes } from '../../../types/count-error';
+import cards from '../../../cards';
 
 const PagesCards = ({ src }: SrcPages): JSX.Element => {
+  // const cards = Object.values<Card>(cardsAll[src]);
   const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
@@ -22,7 +23,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
   const { arrayStars } = useTypeSelector(state => state.arrayStars);
   const { count } = useTypeSelector(state => state.count);
 
-  const arrayAudioSrcWords = cards[src].map(card => {
+  const arrayAudioSrcWords = cards[src].map((card: Card) => {
     const { audioSrc }: Card = card;
     return audioSrc;
   });
@@ -78,8 +79,8 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
           : ''}
       </div>
       <div className="main-wrapper__cards">
-        {cards[src].map(card => {
-          const { word, translation, image, audioSrc }: Card = card;
+        {cards[src].map((card: Card) => {
+          const { word, translation, image, audioSrc, category }: Card = card;
           return (
             <CardPage
               key={word}
@@ -87,6 +88,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
               translation={translation}
               image={image}
               audioSrc={audioSrc}
+              category={category}
               audioSrcStartPlay={arrayWordRandomState}
               arrayWordRandomState={arrayWordRandomState}
               setArray={setArrayWordRandom}

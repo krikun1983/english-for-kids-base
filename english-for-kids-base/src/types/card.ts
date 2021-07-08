@@ -1,10 +1,12 @@
 import { Dispatch, SetStateAction } from 'react';
+import Pages from '../constants/pages';
 
 export interface Card {
   word: string;
   translation: string;
   image: string;
   audioSrc: string;
+  category: string;
 }
 
 export interface CardAction extends Card {
@@ -14,5 +16,5 @@ export interface CardAction extends Card {
 }
 
 export interface SrcPages {
-  src: number;
+  src: Pages;
 }

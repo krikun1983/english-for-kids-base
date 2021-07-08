@@ -1,12 +1,12 @@
 enum Pages {
-  actionSetA = 0,
-  actionSetB = 1,
-  actionSetC = 2,
-  adjective = 3,
-  animalA = 4,
-  animalB = 5,
-  clothes = 6,
-  emotion = 7,
+  actionSetA = 'Action (set A)',
+  actionSetB = 'Action (set B)',
+  actionSetC = 'Action (set C)',
+  adjective = 'Adjective',
+  animalA = 'Animal (set A)',
+  animalB = 'Animal (set B)',
+  clothes = 'Clothes',
+  emotion = 'Emotion',
 }
 
 export default Pages;

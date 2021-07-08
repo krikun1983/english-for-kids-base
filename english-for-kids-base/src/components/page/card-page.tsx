@@ -5,10 +5,10 @@ import { CardAction } from '../../types/card';
 import { StarsActionTypes } from '../../types/stars';
 import successImages from '../../../public/star-win.svg';
 import errorImages from '../../../public/star.svg';
-import './card-page.scss';
 import { GameActionTypes } from '../../types/game';
 import { ResultGameActionTypes } from '../../types/result-game';
 import { CountErrorActionTypes } from '../../types/count-error';
+import './card-page.scss';
 
 const CardPage = ({
   word,
