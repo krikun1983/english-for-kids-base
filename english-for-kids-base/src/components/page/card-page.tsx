@@ -9,6 +9,7 @@ import { GameActionTypes } from '../../types/game';
 import { ResultGameActionTypes } from '../../types/result-game';
 import { CountErrorActionTypes } from '../../types/count-error';
 import './card-page.scss';
+import { updateStatisticData } from '../../utils';
 
 const CardPage = ({
   word,
@@ -21,12 +22,13 @@ const CardPage = ({
 }: CardAction): JSX.Element => {
   const nextWordAudio = 1500; // ms
   const redirectMainPage = 5000; // ms
+  const MAX_STARS = 15; // count
+
   const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
   const { arrayStars } = useTypeSelector(state => state.arrayStars);
   const { count } = useTypeSelector(state => state.count);
-  const MAX_STARS = 15;
 
   const addCount = () => {
     dispatch({ type: CountErrorActionTypes.ADD_COUNT, payload: 1 });
@@ -48,6 +50,7 @@ const CardPage = ({
 
   const cardAudio = (): void => {
     if (!isToggle) {
+      updateStatisticData(word, 'clicks');
       const audio = new Audio(audioSrc);
       audio.play();
     }
@@ -82,12 +85,16 @@ const CardPage = ({
       if (isBtnStart) {
         setCardSuccessHidden(!isCardSuccessHidden);
         addArrayStars(successImages);
+        updateStatisticData(word, 'correct');
       }
     } else if (isBtnStart) {
       addCount();
       const audio = new Audio('errorPlay.mp3');
       audio.play();
       addArrayStars(errorImages);
+      if (audioSrcStartPlay[audioSrcStartPlay.length - 1] !== audioSrc) {
+        updateStatisticData(word, 'inCorrect');
+      }
     }
   };
 

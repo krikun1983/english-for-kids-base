@@ -9,6 +9,13 @@ export interface Card {
   category: string;
 }
 
+export interface CardLocal extends Card {
+  clicks: number;
+  correct: number;
+  inCorrect: number;
+  percent: number;
+}
+
 export interface CardAction extends Card {
   audioSrcStartPlay: string[];
   arrayWordRandomState: string[];

@@ -4,9 +4,10 @@ import Nav from './nav';
 import ToggleSwitch from './nav/toggle-switch';
 import useTypeSelector from '../../hooks/useTypeSelector';
 import { ToggleActionTypes } from '../../types/toggle';
-import './header.scss';
 import { StarsActionTypes } from '../../types/stars';
 import { GameActionTypes } from '../../types/game';
+import { initStatisticPage } from '../../utils';
+import './header.scss';
 
 const Header = (): JSX.Element => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const Header = (): JSX.Element => {
   };
 
   return (
-    <header className="header">
+    <header className="header" onClick={initStatisticPage} role="presentation">
       <Nav />
       <ToggleSwitch id="newsletter" checked={isToggle} onChange={toggleChange} name="toggleSwitch" disabled={false} />
     </header>

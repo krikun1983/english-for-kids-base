@@ -9,7 +9,6 @@ import './main-page.scss';
 const MainPage = (): JSX.Element => {
   const firstImagePageCategory = 0;
   const { isToggle } = useTypeSelector(state => state.isToggle);
-
   return (
     <div className="main-wrapper">
       <div className="main-wrapper__cards">

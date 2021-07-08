@@ -1,9 +1,10 @@
 import React from 'react';
+import { initStatisticPage } from '../../utils';
 import './footer.scss';
 
 const Footer = (): JSX.Element => {
   return (
-    <footer className="footer">
+    <footer className="footer" onClick={initStatisticPage} role="presentation">
       <div className="footer_github">
         <a
           className="footer_github__link"

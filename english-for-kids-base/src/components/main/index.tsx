@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Pages from '../../constants/pages';
+import { initStatisticPage } from '../../utils';
 import MainPage from '../page/main-page/main-page';
 import PagesCards from '../page/pages/pagesCards';
 import StatisticPage from '../page/statistic-page/statistic-page';
@@ -8,7 +9,7 @@ import './main.scss';
 
 const Main = (): JSX.Element => {
   return (
-    <main className="main">
+    <main className="main" onClick={initStatisticPage} role="presentation">
       <Switch>
         <Route exact path="/" component={MainPage} />
         <Route path="/action_a" render={(): JSX.Element => <PagesCards src={Pages.actionSetA} />} />

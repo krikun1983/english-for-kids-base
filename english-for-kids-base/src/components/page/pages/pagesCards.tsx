@@ -14,7 +14,6 @@ import { CountErrorActionTypes } from '../../../types/count-error';
 import cards from '../../../cards';
 
 const PagesCards = ({ src }: SrcPages): JSX.Element => {
-  // const cards = Object.values<Card>(cardsAll[src]);
   const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
@@ -97,7 +96,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
         })}
       </div>
       <div className={`main-wrapper__btn ${isToggle ? '' : 'hidden'}`}>
-        <button type="button" onClick={start}>
+        <button className="btn" type="button" onClick={start}>
           {`${isBtnStart ? 'REPEAT' : 'START GAME'}`}
         </button>
       </div>

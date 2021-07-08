@@ -21,6 +21,13 @@ table > thead  {
   background-color: #21bffa;
 }
 
+.statistic-btns {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
 .temp {
  color: red;
  text-align: center;

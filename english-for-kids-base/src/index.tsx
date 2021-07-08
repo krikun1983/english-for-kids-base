@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import Header from './components/header';
 import Main from './components/main';
 import store from './store';
-import './app.scss';
 import Footer from './components/footer';
+import './app.scss';
 
 const App = (): JSX.Element => (
   <>
