@@ -243,7 +243,7 @@ const cards = {
       word: 'fish',
       translation: 'рыба',
       image: 'images/fish1.jpg',
-      audioSrc: 'audio/fish.mp3',
+      audioSrc: 'audio/fish1.mp3',
       category: 'Animal (Set A)',
     },
     {
