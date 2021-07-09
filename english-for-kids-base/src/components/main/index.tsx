@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Pages from '../../constants/pages';
 import { initStatisticPage } from '../../utils';
+import ErrorWordsPage from '../page/errors-words-page/errors-words-page';
 import MainPage from '../page/main-page/main-page';
 import PagesCards from '../page/pages/pagesCards';
 import StatisticPage from '../page/statistic-page/statistic-page';
@@ -21,6 +22,7 @@ const Main = (): JSX.Element => {
         <Route path="/clothes" render={(): JSX.Element => <PagesCards src={Pages.clothes} />} />
         <Route path="/emotion" render={(): JSX.Element => <PagesCards src={Pages.emotion} />} />
         <Route path="/statistic" component={StatisticPage} />
+        <Route path="/errors_words" component={ErrorWordsPage} />
         <Route path="/**" component={MainPage} />
       </Switch>
     </main>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import uuid from 'react-uuid';
 import { CardLocal } from '../../../types/card';
 import { FieldStatisticPage } from '../../../types/statistic';
@@ -44,14 +45,10 @@ const StatisticPage = (): JSX.Element => {
 
   return (
     <div className="statistic-page">
-      <div className="temp">
-        Уважаемый проверяющий. Просьба или зайти через пару дней. Или оставить свои координаты. Работаю над последней
-        кнопкой статистики. Заранее, большое спасибо!!!
-      </div>
       <div className="statistic-btns">
-        <button className="btn btn_margin" type="button">
+        <Link className="btn btn_margin" to="/errors_words">
           Repeat difficult words
-        </button>
+        </Link>
         <button
           className="btn"
           type="button"

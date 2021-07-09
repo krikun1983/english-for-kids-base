@@ -78,7 +78,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
           : ''}
       </div>
       <div className="main-wrapper__cards">
-        {cards[src].map((card: Card) => {
+        {cards[src].map((card: Card): JSX.Element => {
           const { word, translation, image, audioSrc, category }: Card = card;
           return (
             <CardPage

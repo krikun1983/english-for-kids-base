@@ -1,7 +1,6 @@
 .statistic-page {
   margin: 0 auto;
   width: 1440px;
-  outline: 1px solid red;
 }
 
 table {
@@ -18,6 +17,7 @@ table {
 }
 
 table > thead  {
+  cursor: pointer;
   background-color: #21bffa;
 }
 
@@ -26,11 +26,4 @@ table > thead  {
   align-items: center;
   justify-content: flex-end;
   margin-bottom: 10px;
-}
-
-.temp {
- color: red;
- text-align: center;
- font-weight: bold;
- font-size: 1.5rem;
 }
