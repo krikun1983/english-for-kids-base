@@ -12,7 +12,6 @@ const StatisticPage = (): JSX.Element => {
 
   useEffect(() => {
     const localStorageData = localStorage.getItem('game');
-
     if (localStorageData) {
       setLocalStorageDate(JSON.parse(localStorageData));
       setUpdateTable(false);
@@ -25,19 +24,15 @@ const StatisticPage = (): JSX.Element => {
       setUpdateTable(!updateTable);
       element.classList.remove('asc');
       element.classList.add('desc');
-
       return;
     }
-
     if (element.matches('.desc')) {
       sortTable(category, 'asc');
       setUpdateTable(!updateTable);
       element.classList.remove('desc');
       element.classList.add('asc');
-
       return;
     }
-
     sortTable(category, 'desc');
     setUpdateTable(!updateTable);
     element.classList.add('desc');
@@ -121,6 +116,7 @@ const StatisticPage = (): JSX.Element => {
             </th>
           </tr>
         </thead>
+
         <tbody>
           {localStorageDate.map((card: CardLocal) => {
             return (

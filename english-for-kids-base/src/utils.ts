@@ -15,7 +15,6 @@ export const initLocalStorageData = (): void => {
       percent: 0,
     };
   });
-
   localStorage.setItem('game', JSON.stringify(statistic));
 };
 
@@ -28,13 +27,10 @@ export const initStatisticPage = (): void => {
 
 export const updateStatisticData = (words: string, action: string): void => {
   const localStorageData = localStorage.getItem('game');
-
   if (localStorageData) {
     const data: CardLocal[] = JSON.parse(localStorageData);
-
     data.forEach(item => {
       const dataStatistic = item;
-
       if (item.word === words) {
         switch (action) {
           case 'clicks':
@@ -49,13 +45,11 @@ export const updateStatisticData = (words: string, action: string): void => {
           default:
             break;
         }
-
         if (dataStatistic.inCorrect || dataStatistic.correct) {
           dataStatistic.percent = Number(
             ((dataStatistic.inCorrect * 100) / (dataStatistic.inCorrect + dataStatistic.correct)).toFixed(1),
           );
         }
-
         localStorage.setItem('game', JSON.stringify(data));
       }
     });
@@ -86,6 +80,5 @@ export const sortTable = (field: FieldStatisticPage, filter: FilterStatisticPage
       return 0;
     });
   }
-
   localStorage.setItem('game', JSON.stringify(localStorageData));
 };

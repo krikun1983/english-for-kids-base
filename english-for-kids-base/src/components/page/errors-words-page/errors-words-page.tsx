@@ -7,19 +7,15 @@ const ErrorWordsPage = (): JSX.Element => {
   const localStorageData = JSON.parse(localStorage.getItem('game') as string);
   const dataCards = [...Object.values(cards)].flat();
   const cardsErrorsArray: string[] = [];
-
   const arrayAudioSrcWords = dataCards.map((card: Card) => {
     const { audioSrc }: Card = card;
     return audioSrc;
   });
-
   const randomWords = (words: string[]): string[] => {
     return [...words].sort(() => Math.random() - 0.5);
   };
-
   const arrayWordRandom = randomWords(arrayAudioSrcWords);
   const [arrayWordRandomState, setArrayWordRandom] = useState<string[]>(arrayWordRandom);
-
   return (
     <div className="main-wrapper__cards">
       {localStorageData.forEach((localCard: CardLocal) => {
