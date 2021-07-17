@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import uuid from 'react-uuid';
 import { CardLocal } from '../../../types/card';
-import { FieldStatisticPage } from '../../../types/statistic';
+import LocalStorageGame from '../../../types/localStorage';
+import { FieldStatisticPage, FieldStatisticPageLines, FilterStatisticPageSort } from '../../../types/statistic';
 import { initLocalStorageData, sortTable } from '../../../utils';
 import './statistic-page.scss';
 
 const StatisticPage = (): JSX.Element => {
-  const [localStorageDate, setLocalStorageDate] = useState(JSON.parse(localStorage.getItem('game') as string));
+  const [localStorageDate, setLocalStorageDate] = useState(
+    JSON.parse(localStorage.getItem(LocalStorageGame.GAME) as string),
+  );
   const [updateTable, setUpdateTable] = useState(false);
 
   useEffect(() => {
-    const localStorageData = localStorage.getItem('game');
+    const localStorageData = localStorage.getItem(LocalStorageGame.GAME);
     if (localStorageData) {
       setLocalStorageDate(JSON.parse(localStorageData));
       setUpdateTable(false);
@@ -20,22 +23,22 @@ const StatisticPage = (): JSX.Element => {
 
   const sortedFieldStatisticPage = (element: HTMLElement, category: FieldStatisticPage): void => {
     if (element.matches('.asc')) {
-      sortTable(category, 'desc');
+      sortTable(category, FilterStatisticPageSort.DESC);
       setUpdateTable(!updateTable);
-      element.classList.remove('asc');
-      element.classList.add('desc');
+      element.classList.remove(FilterStatisticPageSort.ASC);
+      element.classList.add(FilterStatisticPageSort.DESC);
       return;
     }
     if (element.matches('.desc')) {
-      sortTable(category, 'asc');
+      sortTable(category, FilterStatisticPageSort.ASC);
       setUpdateTable(!updateTable);
-      element.classList.remove('desc');
-      element.classList.add('asc');
+      element.classList.remove(FilterStatisticPageSort.DESC);
+      element.classList.add(FilterStatisticPageSort.ASC);
       return;
     }
-    sortTable(category, 'desc');
+    sortTable(category, FilterStatisticPageSort.DESC);
     setUpdateTable(!updateTable);
-    element.classList.add('desc');
+    element.classList.add(FilterStatisticPageSort.DESC);
   };
 
   return (
@@ -61,7 +64,7 @@ const StatisticPage = (): JSX.Element => {
             <th
               onClick={(event): void => {
                 const targetClick = event.target as HTMLElement;
-                sortedFieldStatisticPage(targetClick, 'category');
+                sortedFieldStatisticPage(targetClick, FieldStatisticPageLines.CATEGORY);
               }}
             >
               Categories
@@ -69,7 +72,7 @@ const StatisticPage = (): JSX.Element => {
             <th
               onClick={(event): void => {
                 const targetClick = event.target as HTMLElement;
-                sortedFieldStatisticPage(targetClick, 'word');
+                sortedFieldStatisticPage(targetClick, FieldStatisticPageLines.WORD);
               }}
             >
               Words
@@ -77,7 +80,7 @@ const StatisticPage = (): JSX.Element => {
             <th
               onClick={(event): void => {
                 const targetClick = event.target as HTMLElement;
-                sortedFieldStatisticPage(targetClick, 'translation');
+                sortedFieldStatisticPage(targetClick, FieldStatisticPageLines.TRANSLATION);
               }}
             >
               Translation
@@ -85,7 +88,7 @@ const StatisticPage = (): JSX.Element => {
             <th
               onClick={(event): void => {
                 const targetClick = event.target as HTMLElement;
-                sortedFieldStatisticPage(targetClick, 'clicks');
+                sortedFieldStatisticPage(targetClick, FieldStatisticPageLines.CLICKS);
               }}
             >
               Trained
@@ -93,7 +96,7 @@ const StatisticPage = (): JSX.Element => {
             <th
               onClick={(event): void => {
                 const targetClick = event.target as HTMLElement;
-                sortedFieldStatisticPage(targetClick, 'correct');
+                sortedFieldStatisticPage(targetClick, FieldStatisticPageLines.CORRECT);
               }}
             >
               Correct
@@ -101,7 +104,7 @@ const StatisticPage = (): JSX.Element => {
             <th
               onClick={(event): void => {
                 const targetClick = event.target as HTMLElement;
-                sortedFieldStatisticPage(targetClick, 'inCorrect');
+                sortedFieldStatisticPage(targetClick, FieldStatisticPageLines.INCORRECT);
               }}
             >
               Incorrect
@@ -109,7 +112,7 @@ const StatisticPage = (): JSX.Element => {
             <th
               onClick={(event): void => {
                 const targetClick = event.target as HTMLElement;
-                sortedFieldStatisticPage(targetClick, 'percent');
+                sortedFieldStatisticPage(targetClick, FieldStatisticPageLines.PERCENT);
               }}
             >
               %

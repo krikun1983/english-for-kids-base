@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import cards from '../../../cards';
 import { Card, CardLocal } from '../../../types/card';
+import LocalStorageGame from '../../../types/localStorage';
 import CardPage from '../card-page';
 
 const ErrorWordsPage = (): JSX.Element => {
-  const localStorageData = JSON.parse(localStorage.getItem('game') as string);
+  const localStorageData = JSON.parse(localStorage.getItem(LocalStorageGame.GAME) as string);
   const dataCards = [...Object.values(cards)].flat();
   const cardsErrorsArray: string[] = [];
   const arrayAudioSrcWords = dataCards.map((card: Card) => {

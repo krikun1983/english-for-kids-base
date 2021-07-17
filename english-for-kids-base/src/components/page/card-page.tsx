@@ -8,8 +8,9 @@ import errorImages from '../../../public/star.svg';
 import { GameActionTypes } from '../../types/game';
 import { ResultGameActionTypes } from '../../types/result-game';
 import { CountErrorActionTypes } from '../../types/count-error';
-import './card-page.scss';
 import { updateStatisticData } from '../../utils';
+import { FieldStatisticPageLines } from '../../types/statistic';
+import './card-page.scss';
 
 const CardPage = ({
   word,
@@ -50,7 +51,7 @@ const CardPage = ({
 
   const cardAudio = (): void => {
     if (!isToggle) {
-      updateStatisticData(word, 'clicks');
+      updateStatisticData(word, FieldStatisticPageLines.CLICKS);
       const audio = new Audio(audioSrc);
       audio.play();
     }
@@ -85,7 +86,7 @@ const CardPage = ({
       if (isBtnStart) {
         setCardSuccessHidden(!isCardSuccessHidden);
         addArrayStars(successImages);
-        updateStatisticData(word, 'correct');
+        updateStatisticData(word, FieldStatisticPageLines.CORRECT);
       }
     } else if (isBtnStart) {
       addCount();
@@ -93,7 +94,7 @@ const CardPage = ({
       audio.play();
       addArrayStars(errorImages);
       if (audioSrcStartPlay[audioSrcStartPlay.length - 1] !== audioSrc) {
-        updateStatisticData(word, 'inCorrect');
+        updateStatisticData(word, FieldStatisticPageLines.INCORRECT);
       }
     }
   };
