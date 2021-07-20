@@ -11,7 +11,9 @@ import { ResultGameActionTypes } from '../../../types/result-game';
 import { StarsActionTypes } from '../../../types/stars';
 import { ToggleActionTypes } from '../../../types/toggle';
 import { CountErrorActionTypes } from '../../../types/count-error';
-import cards from '../../../cards';
+import cards from '../../../constants/cards';
+import { randomWords } from '../../../utils';
+import BtnStartGame from '../../../constants/btn-start-game';
 
 const PagesCards = ({ src }: SrcPages): JSX.Element => {
   const dispatch = useDispatch();
@@ -26,10 +28,6 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
     const { audioSrc }: Card = card;
     return audioSrc;
   });
-
-  const randomWords = (words: string[]): string[] => {
-    return [...words].sort(() => Math.random() - 0.5);
-  };
 
   const arrayWordRandom = randomWords(arrayAudioSrcWords);
   const [arrayWordRandomState, setArrayWordRandom] = useState<string[]>(arrayWordRandom);
@@ -67,8 +65,8 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
   return (
     <div className="main-wrapper">
       <div className={`result-game ${isResultGame ? '' : 'hidden'}`} role="presentation">
-        {count > 0 ? <img src="failure.png" alt="success" /> : <img src="success.png" alt="success" />}
-        {count > 0 ? <p>error: {count}</p> : <p>Well done keep it up!</p>}
+        <img src={count > 0 ? 'failure.png' : 'success.png'} alt={count > 0 ? 'failure' : 'success'} />
+        <p>{count > 0 ? `error: ${count}` : 'Well done keep it up!'}</p>
       </div>
       <div className="stars-result">
         {arrayStars.length > 0
@@ -77,6 +75,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
             })
           : ''}
       </div>
+      <div className="categories_header">{src}</div>
       <div className="main-wrapper__cards">
         {cards[src].map((card: Card): JSX.Element => {
           const { word, translation, image, audioSrc, category }: Card = card;
@@ -97,7 +96,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
       </div>
       <div className={`main-wrapper__btn ${isToggle ? '' : 'hidden'}`}>
         <button className="btn" type="button" onClick={start}>
-          {`${isBtnStart ? 'REPEAT' : 'START GAME'}`}
+          {`${isBtnStart ? BtnStartGame.REPEAT : BtnStartGame.START_GAME}`}
         </button>
       </div>
     </div>

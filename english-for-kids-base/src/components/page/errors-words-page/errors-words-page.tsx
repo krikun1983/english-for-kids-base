@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import cards from '../../../cards';
+import cards from '../../../constants/cards';
 import { Card, CardLocal } from '../../../types/card';
 import LocalStorageGame from '../../../types/localStorage';
+import { randomWords } from '../../../utils';
 import CardPage from '../card-page';
 
 const ErrorWordsPage = (): JSX.Element => {
@@ -12,9 +13,6 @@ const ErrorWordsPage = (): JSX.Element => {
     const { audioSrc }: Card = card;
     return audioSrc;
   });
-  const randomWords = (words: string[]): string[] => {
-    return [...words].sort(() => Math.random() - 0.5);
-  };
   const arrayWordRandom = randomWords(arrayAudioSrcWords);
   const [arrayWordRandomState, setArrayWordRandom] = useState<string[]>(arrayWordRandom);
   return (

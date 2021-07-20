@@ -10,6 +10,7 @@ import { ResultGameActionTypes } from '../../types/result-game';
 import { CountErrorActionTypes } from '../../types/count-error';
 import { updateStatisticData } from '../../utils';
 import { FieldStatisticPageLines } from '../../types/statistic';
+import { MAX_STARS, nextWordAudio, redirectMainPage } from '../../constants/consts';
 import './card-page.scss';
 
 const CardPage = ({
@@ -21,15 +22,13 @@ const CardPage = ({
   arrayWordRandomState,
   setArray,
 }: CardAction): JSX.Element => {
-  const nextWordAudio = 1500; // ms
-  const redirectMainPage = 5000; // ms
-  const MAX_STARS = 15; // count
-
   const dispatch = useDispatch();
   const { isToggle } = useTypeSelector(state => state.isToggle);
   const { isBtnStart } = useTypeSelector(state => state.isBtnStart);
   const { arrayStars } = useTypeSelector(state => state.arrayStars);
   const { count } = useTypeSelector(state => state.count);
+  const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
+  const [isCardSuccessHidden, setCardSuccessHidden] = useState<boolean>(false);
 
   const addCount = () => {
     dispatch({ type: CountErrorActionTypes.ADD_COUNT, payload: 1 });
@@ -43,14 +42,12 @@ const CardPage = ({
     }
   };
 
-  const [isCardFlipShow, setCardFlipShow] = useState<boolean>(false);
-  const [isCardSuccessHidden, setCardSuccessHidden] = useState<boolean>(false);
   useEffect(() => {
     setCardSuccessHidden(false);
   }, [isToggle]);
 
   const cardAudio = (): void => {
-    if (!isToggle) {
+    if (!isToggle && !isCardFlipShow) {
       updateStatisticData(word, FieldStatisticPageLines.CLICKS);
       const audio = new Audio(audioSrc);
       audio.play();

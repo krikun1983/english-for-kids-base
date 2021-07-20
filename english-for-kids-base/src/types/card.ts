@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import Pages from '../constants/pages';
+import { Pages } from '../constants/pages';
 
 export interface Card {
   word: string;

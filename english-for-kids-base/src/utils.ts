@@ -1,4 +1,4 @@
-import cards from './cards';
+import cards from './constants/cards';
 import { CardLocal } from './types/card';
 import LocalStorageGame from './types/localStorage';
 import {
@@ -87,4 +87,8 @@ export const sortTable = (field: FieldStatisticPage, filter: FilterStatisticPage
     });
   }
   localStorage.setItem(LocalStorageGame.GAME, JSON.stringify(localStorageData));
+};
+
+export const randomWords = (words: string[]): string[] => {
+  return [...words].sort(() => Math.random() - 0.5);
 };
