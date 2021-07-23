@@ -14,6 +14,7 @@ import { CountErrorActionTypes } from '../../../types/count-error';
 import cards from '../../../constants/cards';
 import { randomWords } from '../../../utils';
 import BtnStartGame from '../../../constants/btn-start-game';
+import { Path } from '../../../constants/pages';
 
 const PagesCards = ({ src }: SrcPages): JSX.Element => {
   const dispatch = useDispatch();
@@ -60,7 +61,7 @@ const PagesCards = ({ src }: SrcPages): JSX.Element => {
   };
 
   if (isMain) {
-    return <Redirect to="/" />;
+    return <Redirect to={Path.main} />;
   }
   return (
     <div className="main-wrapper">
